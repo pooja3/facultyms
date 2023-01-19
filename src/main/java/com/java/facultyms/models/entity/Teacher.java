@@ -5,10 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "classes")
-@NamedQueries({
-        @NamedQuery(name = "Teacher.findByClassNameEqualsAndSubject_SubjectNameContainsOrderByTeacherNameAsc", query = "select t from Teacher t where t.className = :className and t.subject.subjectName like concat('%', :subjectName, '%') order by t.teacherName")
-})
+@Table(name = "teachers")
 @Getter
 @Setter
 @ToString

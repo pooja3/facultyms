@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "classes")
+@Table(name = "subjects")
 @Getter
 @Setter
 @ToString

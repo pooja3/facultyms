@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@RestController
 public class TeacherController {
 
     @Autowired
@@ -26,12 +28,12 @@ public class TeacherController {
                         teacherWithClassAndSubject.getSubjectName()
                 );
 
-        if(teacherList.isEmpty()) {
-            return ResponseEntity.badRequest().body("No teacher with found");
+        if (teacherList.isEmpty()) {
+            return ResponseEntity.badRequest().body("No teacher found");
         }
 
         List<TeacherWithClassAndSubjectResponse> teacherWithClassAndSubjectResponseList = new ArrayList<>();
-        for (Teacher teacher: teacherList) {
+        for (Teacher teacher : teacherList) {
             TeacherWithClassAndSubjectResponse teacherWithClassAndSubjectResponse = TeacherWithClassAndSubjectResponse.builder()
                     .className(teacher.getClassName())
                     .subjectName(teacher.getSubject().getSubjectName())
@@ -39,7 +41,7 @@ public class TeacherController {
                     .build();
             teacherWithClassAndSubjectResponseList.add(teacherWithClassAndSubjectResponse);
         }
-        return  ResponseEntity.ok().body(teacherWithClassAndSubjectResponseList);
+        return ResponseEntity.ok().body(teacherWithClassAndSubjectResponseList);
     }
 
     @GetMapping("/api/teacher/find-teacher-attendance")
@@ -50,19 +52,19 @@ public class TeacherController {
                         teacherWithClassAndSubject.getSubjectName()
                 );
 
-        if(teacherList.isEmpty()) {
-            return ResponseEntity.badRequest().body("No teacher with found");
+        if (teacherList.isEmpty()) {
+            return ResponseEntity.badRequest().body("No teacher found");
         }
 
         List<TeacherWithAttendance> teacherWithAttendanceList = new ArrayList<>();
-        for(Teacher teacher: teacherList) {
+        for (Teacher teacher : teacherList) {
             TeacherWithAttendance teacherWithAttendance = TeacherWithAttendance.builder()
                     .teacherName(teacher.getTeacherName())
                     .className(teacher.getClassName())
-                    .attendance(teacher.getAttendance().toString()+"%")
+                    .attendance(teacher.getAttendance().toString() + "%")
                     .build();
             teacherWithAttendanceList.add(teacherWithAttendance);
         }
-        return  ResponseEntity.ok().body(teacherWithAttendanceList);
+        return ResponseEntity.ok().body(teacherWithAttendanceList);
     }
 }
