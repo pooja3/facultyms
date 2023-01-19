@@ -61,6 +61,7 @@ public class TeacherController {
                     .className(teacher.getClassName())
                     .attendance(teacher.getAttendance().toString()+"%")
                     .build();
+            teacherWithAttendanceList.add(teacherWithAttendance);
         }
         return  ResponseEntity.ok().body(teacherWithAttendanceList);
     }
