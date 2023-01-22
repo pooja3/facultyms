@@ -33,7 +33,4 @@ public class Teacher {
 
     Float attendance;
 
-    @ManyToOne
-    @JoinColumn(name = "subjectId")
-    Subject subject;
 }

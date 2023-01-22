@@ -10,8 +10,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class FacultyManagementSystemApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(FacultyManagementSystemApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(FacultyManagementSystemApplication.class, args);
+    }
 
 }
